@@ -18,12 +18,12 @@ export class TableComponent implements AfterViewInit {
     'date',
     'area_name',
     'area_code',
-    'retail_and_recreation_percent_change_from_baseline',
-    'grocery_and_pharmacy_percent_change_from_baseline',
-    'parks_percent_change_from_baseline',
-    'transit_stations_percent_change_from_baseline',
-    'workplaces_percent_change_from_baseline',
-    'residential_percent_change_from_baseline'
+    'retail_and_recreation',
+    'grocery_and_pharmacy',
+    'parks',
+    'transit_stations',
+    'workplaces',
+    'residential'
   ]
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
