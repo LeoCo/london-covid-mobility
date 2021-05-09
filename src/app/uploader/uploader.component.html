@@ -1,0 +1,17 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="centered">
+  <button mat-flat-button color="primary"
+    (click)="fileUpload.click()">
+      <mat-icon>attach_file</mat-icon>
+      Load CSV File
+  </button>
+</div>
+
+<p class="centered">
+  If you need the CSV file please download it&nbsp;
+  <a href="https://data.london.gov.uk/dataset/google-mobility-by-borough" target="_blank">
+    here
+  </a>
+</p>
