@@ -15,6 +15,10 @@ export class PlotComponent implements OnInit {
     end: new FormControl('2021-04-01')
   });
 
+  metric = new FormControl()
+
+  metrics: string[] = []
+
   multi: any[] = [];
   view: [number,number] = [800, 500];
 
@@ -38,10 +42,13 @@ export class PlotComponent implements OnInit {
     // this.multi = multi_data;
     // console.log(this.dataService.getMultiTimeSeriesFiltered())
     // this.multi = this.dataService.getMultiTimeSeriesFiltered()
+    this.metrics = this.dataService.getMetrics()
+    this.metric.setValue(this.metrics[0])
     this.onUpdate()
   }
 
   ngOnInit(): void {
+    this.metric.valueChanges.subscribe(value => {this.onUpdate()})
   }
 
   onSelect(data: any): void {
@@ -58,12 +65,14 @@ export class PlotComponent implements OnInit {
 
   onUpdate() {
     console.log('Update!')
+    const metric = this.metric.value
     const start = moment(this.range.value.start).format('YYYY-MM-DD')
     const end = moment(this.range.value.end).format('YYYY-MM-DD')
     console.log(start)
     console.log(this.range.value.end)
     
     this.multi = this.dataService.getMultiTimeSeriesFiltered(['City of London', 'Westminster'],
+                                                              metric,
                                                               start,
                                                               end)
   }
@@ -73,7 +82,7 @@ export class PlotComponent implements OnInit {
     // console.log(this.dataService.getMultiTimeSeriesFiltered())
     console.log(this.dataService.getAreaNames())
     console.log(this.dataService.getMetrics())
-    console.log(this.range.value)
+    console.log(this.range)
   }
 
 }

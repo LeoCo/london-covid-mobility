@@ -12,6 +12,15 @@
   <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>
 
+<mat-form-field appearance="fill">
+  <mat-label>Metric</mat-label>
+  <mat-select [formControl]="metric">
+    <mat-option *ngFor="let metric of metrics" [value]="metric">
+      {{metric}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <div>
   <ngx-charts-line-chart
     [view]="view"
