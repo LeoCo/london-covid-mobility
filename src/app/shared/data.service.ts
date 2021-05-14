@@ -54,22 +54,22 @@ export class DataService {
 
         const m = this.multiTimeSeries.get(elem.area_name)
         
-        if (elem.retail_and_recreation != NaN)
+        if (!isNaN(elem.retail_and_recreation))
           m!.get('retail_and_recreation')!.push({name: elem.date, value: elem.retail_and_recreation})
         
-        if (elem.grocery_and_pharmacy != NaN)
+        if (!isNaN(elem.grocery_and_pharmacy))
           m!.get('grocery_and_pharmacy')!.push({name: elem.date, value: elem.grocery_and_pharmacy})
         
-        if (elem.parks != NaN)
+        if (!isNaN(elem.parks))
           m!.get('parks')!.push({name: elem.date, value: elem.parks})
         
-        if (elem.transit_stations != NaN)
+        if (!isNaN(elem.transit_stations))
           m!.get('transit_stations')!.push({name: elem.date, value: elem.transit_stations})
         
-        if (elem.workplaces != NaN)
+        if (!isNaN(elem.workplaces))
           m!.get('workplaces')!.push({name: elem.date, value: elem.workplaces})
         
-        if (elem.residential != NaN)
+        if (!isNaN(elem.residential))
           m!.get('residential')!.push({name: elem.date, value: elem.residential})
 
       }
