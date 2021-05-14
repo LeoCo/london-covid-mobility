@@ -10,19 +10,23 @@ import * as moment from 'moment';
 })
 export class PlotComponent implements OnInit {
 
-  range = new FormGroup({
-    start: new FormControl('2021-01-01'),
-    end: new FormControl('2021-04-01')
-  });
+  filterForm = new FormGroup({
+    range: new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    }),
+    metric: new FormControl()
+  })
 
-  metric = new FormControl()
+  areaNamesSelector: Array<{name: string, checked: boolean}> = []
 
   metrics: string[] = []
 
   multi: any[] = [];
-  view: [number,number] = [800, 500];
+  // view: [number,number] = [800, 500];
+  view: any = undefined;
 
-  // options
+  // Chart options
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -39,16 +43,29 @@ export class PlotComponent implements OnInit {
   };
 
   constructor(private dataService: DataService) {
-    // this.multi = multi_data;
-    // console.log(this.dataService.getMultiTimeSeriesFiltered())
-    // this.multi = this.dataService.getMultiTimeSeriesFiltered()
     this.metrics = this.dataService.getMetrics()
-    this.metric.setValue(this.metrics[0])
+
+    for (let areaName of this.dataService.getAreaNames()) {
+      this.areaNamesSelector.push({
+        name: areaName,
+        checked: false
+      })
+    }
+    this.areaNamesSelector[0].checked = true
+
+    this.filterForm.setValue({
+      range: {
+        start: '2020-01-01',
+        end: '2021-04-01'
+      },
+      metric: this.metrics[0]
+    })
+
     this.onUpdate()
   }
 
   ngOnInit(): void {
-    this.metric.valueChanges.subscribe(value => {this.onUpdate()})
+    this.filterForm.valueChanges.subscribe(value => {this.onUpdate()})
   }
 
   onSelect(data: any): void {
@@ -65,13 +82,18 @@ export class PlotComponent implements OnInit {
 
   onUpdate() {
     console.log('Update!')
-    const metric = this.metric.value
-    const start = moment(this.range.value.start).format('YYYY-MM-DD')
-    const end = moment(this.range.value.end).format('YYYY-MM-DD')
-    console.log(start)
-    console.log(this.range.value.end)
+    const metric = this.filterForm.value.metric
+    const start = moment(this.filterForm.value.range.start).format('YYYY-MM-DD')
+    const end = moment(this.filterForm.value.range.end).format('YYYY-MM-DD')
+    const areaNames: string[] = []
+
+    for (let areaNameSelector of this.areaNamesSelector) {
+      if (areaNameSelector.checked == true){
+        areaNames.push(areaNameSelector.name)
+      }
+    }
     
-    this.multi = this.dataService.getMultiTimeSeriesFiltered(['City of London', 'Westminster'],
+    this.multi = this.dataService.getMultiTimeSeriesFiltered(areaNames,
                                                               metric,
                                                               start,
                                                               end)
@@ -80,9 +102,9 @@ export class PlotComponent implements OnInit {
   onClick(){
     // console.log(this.dataService.getMultiTimeSeries())
     // console.log(this.dataService.getMultiTimeSeriesFiltered())
-    console.log(this.dataService.getAreaNames())
-    console.log(this.dataService.getMetrics())
-    console.log(this.range)
+    // console.log(this.dataService.getAreaNames())
+    // console.log(this.dataService.getMetrics())
+    console.log(this.filterForm)
   }
 
 }

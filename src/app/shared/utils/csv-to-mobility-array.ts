@@ -27,5 +27,7 @@ export function csv_to_mobility_array(csv: string): Array<Mobility> {
 
   }
 
+  result.sort((a,b) => (a.date > b.date) ? 1 : ((a.date < b.date) ? -1 : 0))
+
   return result
 }
