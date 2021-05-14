@@ -79,16 +79,17 @@ export class DataService {
   }
 
   getMultiTimeSeriesFiltered(areaNames = ['City of London', 'Westminster'],
+                              metric = 'retail_and_recreation',
                               startDate = '2021-01-01',
                               endDate = '2021-04-01') {
     const result = []
 
-    for (let key of areaNames) {
+    for (let areaName of areaNames) {
       result.push({
-        name: key,
+        name: areaName,
         series: this.getMultiTimeSeries()
-                    .get(key)!
-                    .get('retail_and_recreation')!
+                    .get(areaName)!
+                    .get(metric)!
                     .filter((p) => (startDate <= p.name && p.name <= endDate))
       })
     }
