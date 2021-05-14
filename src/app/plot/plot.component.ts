@@ -11,16 +11,27 @@ import * as moment from 'moment';
 export class PlotComponent implements OnInit {
 
   filterForm = new FormGroup({
+    metric: new FormControl(),
+    days: new FormControl(),
     range: new FormGroup({
       start: new FormControl(),
       end: new FormControl()
-    }),
-    metric: new FormControl()
+    })
   })
 
   areaNamesSelector: Array<{name: string, checked: boolean}> = []
 
   metrics: string[] = []
+
+  days = [
+    {name: 'Monday', value: 1},
+    {name: 'Tuesday', value: 2},
+    {name: 'Wednesday', value: 3},
+    {name: 'Thursday', value: 4},
+    {name: 'Friday', value: 5},
+    {name: 'Saturday', value: 6},
+    {name: 'Sunday', value: 0}
+  ]
 
   multi: any[] = [];
   // view: [number,number] = [800, 500];
@@ -54,11 +65,12 @@ export class PlotComponent implements OnInit {
     this.areaNamesSelector[0].checked = true
 
     this.filterForm.setValue({
+      metric: this.metrics[0],
+      days: [0,1,2,3,4,5,6],
       range: {
         start: '2020-01-01',
         end: '2021-04-01'
-      },
-      metric: this.metrics[0]
+      }
     })
 
     this.onUpdate()
@@ -73,6 +85,7 @@ export class PlotComponent implements OnInit {
     const metric = this.filterForm.value.metric
     const start = moment(this.filterForm.value.range.start).format('YYYY-MM-DD')
     const end = moment(this.filterForm.value.range.end).format('YYYY-MM-DD')
+    const days = new Set(<number[]>this.filterForm.value.days)
     const areaNames: string[] = []
 
     for (let areaNameSelector of this.areaNamesSelector) {
@@ -84,7 +97,8 @@ export class PlotComponent implements OnInit {
     this.multi = this.dataService.getMultiTimeSeriesFiltered(areaNames,
                                                               metric,
                                                               start,
-                                                              end)
+                                                              end,
+                                                              days)
   }
 
   onClick(){

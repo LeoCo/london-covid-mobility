@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Mobility } from "../models/mobility.model";
 import { Point } from "../models/point.model";
+import * as moment from 'moment';
 
 @Injectable()
 export class DataService {
@@ -78,11 +79,16 @@ export class DataService {
     return this.multiTimeSeries
   }
 
-  getMultiTimeSeriesFiltered(areaNames = ['City of London', 'Westminster'],
-                              metric = 'retail_and_recreation',
-                              startDate = '2021-01-01',
-                              endDate = '2021-04-01') {
+  getMultiTimeSeriesFiltered(areaNames: string[], //['City of London', 'Westminster']
+                              metric: string,     // 'retail_and_recreation'
+                              startDate: string,  // '2021-01-01'
+                              endDate: string,    // '2021-04-01'
+                              dayOfWeek = new Set([0,1,2,3,4,5,6])) {
     const result = []
+
+    function filterDate(p: Point) {
+
+    }
 
     for (let areaName of areaNames) {
       result.push({
@@ -90,7 +96,11 @@ export class DataService {
         series: this.getMultiTimeSeries()
                     .get(areaName)!
                     .get(metric)!
-                    .filter((p) => (startDate <= p.name && p.name <= endDate))
+                    .filter((p) => (startDate <= p.name &&
+                                    p.name <= endDate &&
+                                    dayOfWeek.has(moment(p.name).days())
+                                    )
+                            )
       })
     }
 
