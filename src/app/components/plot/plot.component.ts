@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DataService } from '../../shared/data.service';
+import { DataService } from '../../services/data.service';
 import * as moment from 'moment';
 
 @Component({

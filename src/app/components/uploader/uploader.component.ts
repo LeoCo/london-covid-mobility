@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../../shared/data.service';
+import { DataService } from '../../services/data.service';
 import { csv_to_mobility_array } from '../../shared/utils/csv-to-mobility-array';
 
 @Component({

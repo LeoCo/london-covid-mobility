@@ -9,7 +9,7 @@ import { TableComponent } from './components/table/table.component';
 import { PlotComponent } from './components/plot/plot.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SharedModule } from './shared/shared.module';
-import { DataService } from './shared/data.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [

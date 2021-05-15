@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Mobility } from '../../models/mobility.model';
-import { DataService } from '../../shared/data.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-table',
