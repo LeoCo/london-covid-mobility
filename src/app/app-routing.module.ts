@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UploaderComponent } from './uploader/uploader.component';
-import { TableComponent } from './table/table.component';
-import { PlotComponent } from './plot/plot.component';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { TableComponent } from './components/table/table.component';
+import { PlotComponent } from './components/plot/plot.component';
 
 const routes: Routes = [
   { path: 'uploader', component: UploaderComponent },
