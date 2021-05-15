@@ -1,0 +1,11 @@
+<p>overview works!</p>
+
+<ngx-charts-sparkline
+        *ngIf="chartType === 'sparkline'"
+        [view]="[100, 50]"
+        class="chart-container"
+        [scheme]="'flame'"
+        [results]="sparklineData"
+        [animations]="animations"
+        [curve]="curve"
+      >
