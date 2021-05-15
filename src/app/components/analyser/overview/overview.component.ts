@@ -18,14 +18,10 @@ export class OverviewComponent implements OnInit {
     'residential'
   ];
 
-  dataSource: Array<{
-    areaName: string
-  }> = []
+  dataSource: Array<{}> = []
 
   // Chart options
-  multi: any[] = [];
   view: [number,number] = [150, 50];
-  // view: any = undefined;
   legend: boolean = false;
   showLabels: boolean = false;
   animations: boolean = false;
@@ -41,7 +37,13 @@ export class OverviewComponent implements OnInit {
   };
 
   constructor(private dataService: DataService) {
+    this.initDataSource();
+   }
 
+  ngOnInit(): void {
+  }
+
+  initDataSource() {
     const multiTimeSeries = this.dataService.getMultiTimeSeries()
 
     for (let area of multiTimeSeries.keys()){
@@ -65,10 +67,6 @@ export class OverviewComponent implements OnInit {
 
       this.dataSource.push(row)
     }
-   }
-
-  ngOnInit(): void {
-    console.log(this.dataSource)
   }
 
 }
