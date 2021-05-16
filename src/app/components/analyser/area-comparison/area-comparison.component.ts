@@ -81,7 +81,6 @@ export class AreaComparisonComponent implements OnInit {
   }
 
   onUpdate() {
-    console.log('Update!')
     const metric = this.filterForm.value.metric
     const start = moment(this.filterForm.value.range.start).format('YYYY-MM-DD')
     const end = moment(this.filterForm.value.range.end).format('YYYY-MM-DD')

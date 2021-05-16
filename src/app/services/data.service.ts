@@ -134,8 +134,6 @@ export class DataService {
         name: date.isoWeekYear() + '-' + String(date.isoWeek()).padStart(2, '0'),
         value: s.value
       }
-      console.log(date)
-      console.log(s)
 
       switch (date.day()) {
           case 1:
