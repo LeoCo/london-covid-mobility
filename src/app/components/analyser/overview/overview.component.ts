@@ -32,9 +32,12 @@ export class OverviewComponent implements OnInit {
   xAxisLabel: string = 'Date';
   yAxisLabel: string = 'Percentage Change From Baseline';
   timeline: boolean = false;
-  colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  colorSchemeRed = {
+    domain: ['#E44D25']
   };
+  colorSchemeGreen = {
+    domain: ['#5AA454']
+  }
 
   constructor(private dataService: DataService) {
     this.initDataSource();
@@ -53,7 +56,7 @@ export class OverviewComponent implements OnInit {
       }
       
       for (let metric of multiTimeSeries.get(area)!.keys()) {
-        const series = []
+        let series = []
         
         for (let i = 0; i < multiTimeSeries.get(area)!.get(metric)!.length; i += 4){
           series.push(multiTimeSeries.get(area)!.get(metric)![i])
@@ -61,8 +64,10 @@ export class OverviewComponent implements OnInit {
 
         row[metric] = [{
           name: metric,
+          latest: Object.keys(series).length > 0 ? series[Object.keys(series).length - 1].value : 0,
           series: series
         }]
+
       }
 
       this.dataSource.push(row)
