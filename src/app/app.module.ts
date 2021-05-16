@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { TableComponent } from './components/table/table.component';
-import { PlotComponent } from './components/plot/plot.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { DataService } from './services/data.service';
@@ -20,7 +19,6 @@ import { AreaComparisonComponent } from './components/analyser/area-comparison/a
     AppComponent,
     UploaderComponent,
     TableComponent,
-    PlotComponent,
     HeaderComponent,
     AnalyserComponent,
     OverviewComponent,
