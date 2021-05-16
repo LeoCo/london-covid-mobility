@@ -12,8 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { DataService } from './services/data.service';
 import { AnalyserComponent } from './components/analyser/analyser.component';
 import { OverviewComponent } from './components/analyser/overview/overview.component';
-import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot-by-metric.component';
 import { DayOfWeekHeatmapComponent } from './components/analyser/day-of-week-heatmap/day-of-week-heatmap.component';
+import { AreaComparisonComponent } from './components/analyser/area-comparison/area-comparison.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { DayOfWeekHeatmapComponent } from './components/analyser/day-of-week-hea
     HeaderComponent,
     AnalyserComponent,
     OverviewComponent,
-    PlotByMetricComponent,
-    DayOfWeekHeatmapComponent
+    DayOfWeekHeatmapComponent,
+    AreaComparisonComponent
   ],
   imports: [
     BrowserModule,

@@ -4,11 +4,11 @@ import { DataService } from '../../../services/data.service';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-plot-by-metric',
-  templateUrl: './plot-by-metric.component.html',
-  styleUrls: ['./plot-by-metric.component.css']
+  selector: 'app-area-comparison',
+  templateUrl: './area-comparison.component.html',
+  styleUrls: ['./area-comparison.component.css']
 })
-export class PlotByMetricComponent implements OnInit {
+export class AreaComparisonComponent implements OnInit {
 
   filterForm = new FormGroup({
     metric: new FormControl(),

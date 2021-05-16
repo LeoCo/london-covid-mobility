@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlotByMetricComponent } from './plot-by-metric.component';
+import { AreaComparisonComponent } from './area-comparison.component';
 
-describe('PlotByMetricComponent', () => {
-  let component: PlotByMetricComponent;
-  let fixture: ComponentFixture<PlotByMetricComponent>;
+describe('AreaComparisonComponent', () => {
+  let component: AreaComparisonComponent;
+  let fixture: ComponentFixture<AreaComparisonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlotByMetricComponent ]
+      declarations: [ AreaComparisonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlotByMetricComponent);
+    fixture = TestBed.createComponent(AreaComparisonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
