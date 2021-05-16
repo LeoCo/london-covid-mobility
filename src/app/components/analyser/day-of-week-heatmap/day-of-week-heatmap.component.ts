@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
+import { unitOfTime } from 'moment';
 
 @Component({
   selector: 'app-day-of-week-heatmap',
@@ -63,8 +64,8 @@ export class DayOfWeekHeatmapComponent implements OnInit {
   onUpdate() {
     const metric = this.filterForm.value.metric
     const area = this.filterForm.value.area
-    const start = moment(this.filterForm.value.range.start).format('YYYY-MM-DD')
-    const end = moment(this.filterForm.value.range.end).format('YYYY-MM-DD')
+    const start = moment(this.filterForm.value.range.start).startOf('isoweek' as unitOfTime.StartOf).format('YYYY-MM-DD')
+    const end = moment(this.filterForm.value.range.end).endOf('isoweek' as unitOfTime.StartOf).format('YYYY-MM-DD')
 
     this.multi = this.dataService.getTimeSeriesByDayOfWeek(metric,
                                                             area,
