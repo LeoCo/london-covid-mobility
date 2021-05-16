@@ -10,14 +10,26 @@ export class DataService {
   areaNames: string[] = [];
   metrics: string[] = [];
 
+  /**
+   * Sets the data
+   * @param data
+   */
   setData(data: Array<Mobility>) {
     this.data = data
   }
 
+  /**
+   * Returns the data
+   * @returns data
+   */
   getData(): Array<Mobility> {
     return this.data
   }
 
+  /**
+   * Returns the list of area names
+   * @returns area names
+   */
   getAreaNames(): string[] {
     if (this.areaNames.length == 0) {
       this.areaNames = Array.from(this.getMultiTimeSeries().keys())
@@ -25,6 +37,10 @@ export class DataService {
     return this.areaNames
   }
 
+  /**
+   * Returns the list of metrics
+   * @returns metrics
+   */
   getMetrics(): string[] {
     if (this.metrics.length == 0) {
       const areaName = this.getAreaNames()[0]
@@ -33,6 +49,10 @@ export class DataService {
     return this.metrics
   }
 
+  /**
+   * Returns an object that contains all the Time Series for all the possible permutations of metrics and areas 
+   * @returns Time Series for all metrics and areas
+   */
   getMultiTimeSeries() {
     // Lazy loading
     if (this.multiTimeSeries.size == 0) {
@@ -79,6 +99,15 @@ export class DataService {
     return this.multiTimeSeries
   }
 
+  /**
+   * Apply all the inputs as filter to return a ngx-chart formatted time series for line charts 
+   * @param areaNames Array of area names
+   * @param metric Metric
+   * @param startDate Start date
+   * @param endDate End date
+   * @param dayOfWeek Day of week
+   * @returns ngx-chart formatted time series for line charts
+   */
   getMultiTimeSeriesFiltered(areaNames: string[], //['City of London', 'Westminster']
                               metric: string,     // 'retail_and_recreation'
                               startDate: string,  // '2021-01-01'
@@ -107,6 +136,14 @@ export class DataService {
     return result
   }
 
+  /**
+   * Apply all the inputs as filter to return a ngx-chart formatted time series for heatmaps
+   * @param metric Metric
+   * @param areaName Area name
+   * @param startDate Start date
+   * @param endDate End date
+   * @returns ngx-chart formatted time series for heatmaps
+   */
   getTimeSeriesByDayOfWeek(metric = 'transit_stations',
                             areaName = 'City of London',
                             startDate = '2020-04-06',
