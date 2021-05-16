@@ -4,12 +4,12 @@ import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-metric-stats',
-  templateUrl: './metric-stats.component.html',
-  styleUrls: ['./metric-stats.component.css']
+  selector: 'app-day-of-week-heatmap',
+  templateUrl: './day-of-week-heatmap.component.html',
+  styleUrls: ['./day-of-week-heatmap.component.css']
 })
-export class MetricStatsComponent implements OnInit {
-  
+export class DayOfWeekHeatmapComponent implements OnInit {
+
   filterForm = new FormGroup({
     metric: new FormControl(),
     area: new FormControl(),

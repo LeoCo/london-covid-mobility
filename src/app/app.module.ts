@@ -13,7 +13,7 @@ import { DataService } from './services/data.service';
 import { AnalyserComponent } from './components/analyser/analyser.component';
 import { OverviewComponent } from './components/analyser/overview/overview.component';
 import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot-by-metric.component';
-import { MetricStatsComponent } from './components/analyser/metric-stats/metric-stats.component';
+import { DayOfWeekHeatmapComponent } from './components/analyser/day-of-week-heatmap/day-of-week-heatmap.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { MetricStatsComponent } from './components/analyser/metric-stats/metric-
     AnalyserComponent,
     OverviewComponent,
     PlotByMetricComponent,
-    MetricStatsComponent
+    DayOfWeekHeatmapComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import { PlotComponent } from './components/plot/plot.component';
 import { AnalyserComponent } from './components/analyser/analyser.component';
 import { OverviewComponent } from './components/analyser/overview/overview.component';
 import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot-by-metric.component';
-import { MetricStatsComponent } from './components/analyser/metric-stats/metric-stats.component';
+import { DayOfWeekHeatmapComponent } from './components/analyser/day-of-week-heatmap/day-of-week-heatmap.component';
 
 const routes: Routes = [
   { path: 'uploader', component: UploaderComponent },
@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'analyser', component: AnalyserComponent,
     children: [
       { path: 'overview', component: OverviewComponent },
-      { path: 'metric-stats', component: MetricStatsComponent },
-      { path: 'plot-by-metric', component: PlotByMetricComponent }
+      { path: 'plot-by-metric', component: PlotByMetricComponent },
+      { path: 'day-of-week-heatmap', component: DayOfWeekHeatmapComponent }
     ]
   },
   { path: '**', redirectTo: 'uploader' }

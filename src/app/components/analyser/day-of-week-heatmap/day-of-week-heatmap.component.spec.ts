@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MetricStatsComponent } from './metric-stats.component';
+import { DayOfWeekHeatmapComponent } from './day-of-week-heatmap.component';
 
-describe('MetricStatsComponent', () => {
-  let component: MetricStatsComponent;
-  let fixture: ComponentFixture<MetricStatsComponent>;
+describe('DayOfWeekHeatmapComponent', () => {
+  let component: DayOfWeekHeatmapComponent;
+  let fixture: ComponentFixture<DayOfWeekHeatmapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MetricStatsComponent ]
+      declarations: [ DayOfWeekHeatmapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MetricStatsComponent);
+    fixture = TestBed.createComponent(DayOfWeekHeatmapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
