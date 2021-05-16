@@ -13,6 +13,7 @@ import { DataService } from './services/data.service';
 import { AnalyserComponent } from './components/analyser/analyser.component';
 import { OverviewComponent } from './components/analyser/overview/overview.component';
 import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot-by-metric.component';
+import { MetricStatsComponent } from './components/analyser/metric-stats/metric-stats.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot
     HeaderComponent,
     AnalyserComponent,
     OverviewComponent,
-    PlotByMetricComponent
+    PlotByMetricComponent,
+    MetricStatsComponent
   ],
   imports: [
     BrowserModule,

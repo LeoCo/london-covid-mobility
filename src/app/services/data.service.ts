@@ -105,6 +105,95 @@ export class DataService {
     }
 
     return result
+  }
+
+  getTimeSeriesByDayOfWeek(metric = 'transit_stations',
+                            areaName = 'City of London',
+                            startDate = '2020-04-06',
+                            endDate = '2020-08-02') {
+    
+    const series = this.getMultiTimeSeries()
+                        .get(areaName)!
+                        .get(metric)!
+                        .filter((p) => (startDate <= p.name &&
+                                        p.name <= endDate)
+                                )
+    
+    const monday = []
+    const tuesday = []
+    const wednesday = []
+    const thursday = []
+    const friday = []
+    const saturday = []
+    const sunday = []
+
+    for (let s of series) {
+      const date = moment(s.name)
+
+      const point = {
+        name: date.isoWeekYear() + '-' + String(date.isoWeek()).padStart(2, '0'),
+        value: s.value
+      }
+      console.log(date)
+      console.log(s)
+
+      switch (date.day()) {
+          case 1:
+            monday.push(point)
+            break
+          case 2:
+            tuesday.push(point)
+            break
+          case 3:
+            wednesday.push(point)
+            break
+          case 4:
+            thursday.push(point)
+            break
+          case 5:
+            friday.push(point)
+            break
+          case 6:
+            saturday.push(point)
+            break
+          case 0:
+            sunday.push(point)
+            break
+      }
+    }
+
+    const res = [
+      {
+        name: 'Monday',
+        series: monday
+      },
+      {
+        name: 'Tuesday',
+        series: tuesday
+      },
+      {
+        name: 'Wednesday',
+        series: wednesday
+      },
+      {
+        name: 'Thursday',
+        series: thursday
+      },
+      {
+        name: 'Friday',
+        series: friday
+      },
+      {
+        name: 'Saturday',
+        series: saturday
+      },
+      {
+        name: 'Sunday',
+        series: sunday
+      }
+    ]
+
+    return res
 
   }
 

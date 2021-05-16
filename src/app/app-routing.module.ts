@@ -6,6 +6,7 @@ import { PlotComponent } from './components/plot/plot.component';
 import { AnalyserComponent } from './components/analyser/analyser.component';
 import { OverviewComponent } from './components/analyser/overview/overview.component';
 import { PlotByMetricComponent } from './components/analyser/plot-by-metric/plot-by-metric.component';
+import { MetricStatsComponent } from './components/analyser/metric-stats/metric-stats.component';
 
 const routes: Routes = [
   { path: 'uploader', component: UploaderComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'analyser', component: AnalyserComponent,
     children: [
       { path: 'overview', component: OverviewComponent },
+      { path: 'metric-stats', component: MetricStatsComponent },
       { path: 'plot-by-metric', component: PlotByMetricComponent }
     ]
   },
