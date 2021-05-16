@@ -1,5 +1,10 @@
 import { Mobility } from "src/app/models/mobility.model";
 
+/**
+ * Takes the csv file and returns an array of objects
+ * @param csv csv file as a string
+ * @returns array of objects
+ */
 export function csv_to_mobility_array(csv: string): Array<Mobility> {
 
   const result: Array<Mobility> = []
@@ -26,6 +31,8 @@ export function csv_to_mobility_array(csv: string): Array<Mobility> {
     }
 
   }
+
+  result.sort((a,b) => (a.date > b.date) ? 1 : ((a.date < b.date) ? -1 : 0))
 
   return result
 }

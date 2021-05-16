@@ -1,0 +1,53 @@
+<div style="padding: 30px;">
+  <form [formGroup]="filterForm" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Metric</mat-label>
+        <mat-select formControlName="metric">
+          <mat-option *ngFor="let metric of metrics" [value]="metric">
+            {{metric}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Area</mat-label>
+        <mat-select formControlName="area">
+          <mat-option *ngFor="let area of areaNames" [value]="area">
+            {{area}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Date Range</mat-label>
+        <mat-date-range-input formGroupName="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </form>
+  
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <ngx-charts-heat-map
+      [view]="view"
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [results]="multi"
+      >
+    </ngx-charts-heat-map>
+  </div>
+</div>

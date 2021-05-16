@@ -9,7 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
@@ -36,7 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }
